@@ -28,7 +28,7 @@ namespace PicPayChallenge.Infrastructure.Persistence.Repositories
                        					WHERE Name LIKE @Term OR UserName LIKE @Term
                                       ) AS TBL
                        WHERE NUMBER BETWEEN ((@PageNumber - 1) * @RowsOfPage + 1) AND (@PageNumber * @RowsOfPage)", 
-                       new { Term = $"%{request.Term}%", PageNumber = request.PageNumber, RowsOfPage = request.RowsOfPage});
+                       new { Term = $"%{request.Term}%", PageNumber = request.PageNumber, RowsOfPage = request.RowsOfPage}, commandTimeout: 120);
             }
         }
     }
